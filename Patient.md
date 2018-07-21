@@ -9,7 +9,7 @@ A local practice has asked you to build a piece of software to help them to mana
 
 As a clinician 
 I want to document each diagnosis of a disease in a patient
-So I am store their disease history and monitor their patterns of disease over time
+So I can store their disease history and monitor their patterns of disease over time
 
 Clinicians should be able to:
 	 create a patient
@@ -19,7 +19,7 @@ Clinicians should be able to:
 #### Manage Diseases
 
 As a clinician
-I want to mange a list of diseases
+I want to manage a list of diseases
 So that I know which diseases are known, reclasssified or no longer relevant and can access their details
 
 Clinicians should be able to:
@@ -50,8 +50,16 @@ Association between disease and profession
 As a clinician 
 I want to see which disease is the most frequent in a particular age group / profession
 So I can establish if a particular profession if more prone to a particular disease
+A clinician should be able to see which profession has the most diagnoses
 
 Identify whether the diagnosis has been resolved or is ongoing
 As a clinician I want to mark a diagnosis as treated/resolved 
-So I can maintain an up-to-date record of current/active/ongoing diseases  
+So I can maintain an up-to-date record of current/active/ongoing diseases 
+A clinicina should be able to assigned a diagnosis as either active or resolved diagnoses
+A clinician should be able to view all active or all resoved diagnoses
+
+Rank each patient by sickeness factor
+As a clinicain I want to rank patients by disease severity nly on those with with active / unresolved diagnoses 
+So I can detect the sickest patient
+A clinician shoud be able to identify the sickest patient by factoring the disease potential danger x actual disease severity rating. NB a patient could have multiple diagnoses; some active and some resolved; the sickness rating should only factor in active diagnoses
 
