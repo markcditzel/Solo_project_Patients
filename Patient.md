@@ -1,4 +1,4 @@
-### Gym
+### Simple Patient Diagnosis Tool - 1st encounter P2C
 
 A local practice has asked you to build a piece of software to help them to manage patient diagnoses.
 
