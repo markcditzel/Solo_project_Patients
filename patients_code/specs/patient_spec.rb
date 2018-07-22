@@ -30,7 +30,8 @@ class TestPatient < MiniTest::Test
         "dob" => "11-11-1999",
         "age" => "20",
         "gender" => "male",
-        "profession" => "astronaut"})
+        "profession" => "astronaut"
+      })
   end
 
   def test_patient_first_name
