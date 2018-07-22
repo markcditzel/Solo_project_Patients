@@ -55,6 +55,15 @@ class TestDiagnosis < MiniTest::Test
     assert_equal(10, @diagnosisX.severity_score)
   end
 
+  def test_disease_active_PASS
+    assert_equal(true, @diagnosisX.disease_active)
+  end
+
+  def test_disease_active_FAIL
+    assert_equal(false, @diagnosisX.disease_active)
+  end
+
+
   def test_date_of_resolution_PASS
     assert_equal("21-Jan-2018", @diagnosisX.date_of_resolution.strftime('%d-%b-%Y'))
   end
