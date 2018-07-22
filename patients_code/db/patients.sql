@@ -26,8 +26,8 @@ CREATE TABLE diseases
 CREATE TABLE diagnoses
 (
   id serial8 primary key,
-  disease_id INT8 references diseases(id),
-  patient_id INT8 references patients(id),
+  disease_id INT8 references diseases(id) ON DELETE CASCADE,
+  patient_id INT8 references patients(id) ON DELETE CASCADE,
   date_of_diagnosis VARCHAR(10), -- restrain to xx-xx-xxxx
   severity_score INT2,
   disease_active VARCHAR(5), -- restrict to true or false

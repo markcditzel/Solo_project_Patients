@@ -4,7 +4,7 @@ require 'date' # this ensures that dobs and ages can be manipulated
 
 class Patient
 
-  attr_reader :first_name, :second_name, :dob, :age, :gender, :profession
+  attr_reader :first_name, :second_name, :dob, :age, :gender, :profession, :save
 
   #this method is passed options which will be provided as a hash; the ['x'] references the key of the hash
   def initialize( options )
@@ -57,5 +57,21 @@ class Patient
     @profession = options["profession"].capitalize
   end
 
-
+  def save()
+    sql = "INSERT INTO patients
+    ( first_name,
+    second_name,
+    dob,
+    age,
+    gender,
+    profession
+    )
+    VALUES (
+    $1, $2, $3, $4, $5, $6
+    )
+    RETURNING id"
+    values = [@first_name, @second_name, @dob, @age, @gender, @profession]
+    patient = SqlRunner.run( sql, values ).first
+    @id = patient['id'].to_i
+  end
 end
