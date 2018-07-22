@@ -1,4 +1,4 @@
-require relative( '../db/sql_runner' )
+# require_relative( '../db/sql_runner' )
 require 'date' # this ensures that dobs and ages can be manipulated
 
 class Patient
@@ -20,7 +20,7 @@ class Patient
     # for .parse the format can be 31-12-2010'
     # NB need to add require 'date' to allow date manipulations
     # @dob1 = Date.new( options['dob'] ).to_i
-    @dob = Date.parse( options['dob']).to_i
+    @dob = Date.parse( options['dob'])
 
     #NB To get the days difference:
     # (newer_date -older_date).to_i
@@ -53,7 +53,7 @@ class Patient
     #for now - just enter an integer!
     @age = options['age'].to_i
     @gender = options['gender']
-    @profession = options['profession']  
+    @profession = options['profession']
   end
 
 
