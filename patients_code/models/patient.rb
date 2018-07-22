@@ -1,17 +1,18 @@
 # require_relative( '../db/sql_runner' )
+
 require 'date' # this ensures that dobs and ages can be manipulated
 
 class Patient
 
-  #TODO attribute reader, writer and accessor goes here
+  attr_reader :first_name, :second_name, :dob, :age, :gender, :profession
 
   #this method is passed options which will be provided as a hash; the ['x'] references the key of the hash
   def initialize( options )
     #this pulls the id-associated 'value' and converts it from a string to an integer; the if statement ensure that the to_i method is only called if there is a string-number to act upon; therefore preventing a nil.to_i error
     #the id is provided once the database assigns it a primary key
-    @id = options['id'].to_i if options['id']
-    @first_name = options['first_name'].capitalize
-    @second_name = options['second_name'].capitalize
+    # @id = options["id"].to_i if options["id"]
+    @first_name = options["first_name"].capitalize
+    @second_name = options["second_name"].capitalize
 
     #this method creates the dob by calling Date class method by passing in the options['dob']; NB the format has to be 2008, 4, 10 (Year, Month, Year)
     #May have to enter dob as seperate day, month and year instance variables and the dob formed by joining by commas
@@ -20,7 +21,7 @@ class Patient
     # for .parse the format can be 31-12-2010'
     # NB need to add require 'date' to allow date manipulations
     # @dob1 = Date.new( options['dob'] ).to_i
-    @dob = Date.parse( options['dob'])
+    @dob = Date.parse( options["dob"])
 
     #NB To get the days difference:
     # (newer_date -older_date).to_i
@@ -51,9 +52,9 @@ class Patient
     # end
 
     #for now - just enter an integer!
-    @age = options['age'].to_i
-    @gender = options['gender']
-    @profession = options['profession']
+    @age = options["age"].to_i
+    @gender = options["gender"].capitalize
+    @profession = options["profession"].capitalize
   end
 
 
