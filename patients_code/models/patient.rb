@@ -1,4 +1,4 @@
-# require_relative( '../db/sql_runner' )
+require_relative( '../db/sql_runner' )
 
 require 'date' # this ensures that dobs and ages can be manipulated
 
@@ -58,7 +58,7 @@ class Patient
   end
 
   def save()
-    sql = "INSERT INTO patients
+    sql = 'INSERT INTO patients
     ( first_name,
     second_name,
     dob,
@@ -69,7 +69,7 @@ class Patient
     VALUES (
     $1, $2, $3, $4, $5, $6
     )
-    RETURNING id"
+    RETURNING id'
     values = [@first_name, @second_name, @dob, @age, @gender, @profession]
     patient = SqlRunner.run( sql, values ).first
     @id = patient['id'].to_i
