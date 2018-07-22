@@ -10,7 +10,7 @@ class Patient
   def initialize( options )
     #this pulls the id-associated 'value' and converts it from a string to an integer; the if statement ensure that the to_i method is only called if there is a string-number to act upon; therefore preventing a nil.to_i error
     #the id is provided once the database assigns it a primary key
-    # @id = options["id"].to_i if options["id"]
+    @id = options["id"].to_i if options["id"]
     @first_name = options["first_name"].capitalize
     @second_name = options["second_name"].capitalize
 
