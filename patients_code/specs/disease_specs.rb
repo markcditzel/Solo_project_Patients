@@ -1,6 +1,6 @@
 require('minitest/autorun')
-require 'date'
 require_relative('../models/disease')
+# require 'pry'
 
 class TestDisease < MiniTest::Test
 
@@ -25,21 +25,35 @@ class TestDisease < MiniTest::Test
     "latin_name" => "atopic dermatitis",
     "disease_agent_class" => "autoimmune",
     "organs_affected" => "skin",
-    "severity_index" => "3"
+    "severity_index" => "4"
     })
-    # @patient4 = Disease.new({
-    #   "" => "sarcoidosis",
-    #   "latin_name" => "v",
-    #   "disease_agent_class" => "autoimmune",
-    #   "organs_affected" => "lungs lymph-glands skin eyes liver",
-    #   "severity_index" => "3"
-    # })
 
-    p @disease1
+    @patient4 = Disease.new({
+    "common_name" => "sarcoidosis",
+    "latin_name" => "granulomas",
+    "disease_agent_class" => "autoimmune",
+    "organs_affected" => "lungs, lymph-glands, skin, eyes, liver",
+    "severity_index" => "7"
+    })
 
   end
 
-  def test_disease_has_common_name_PASS
-    assert_equal('Crabs', @disease1.common_name)
+  def test_disease_common_name_PASS
+    assert_equal("Eczma", @disease3.common_name)
   end
+
+  def test_latin_name_PASS
+    assert_equal("Acute laryngotracheitis", @disease2.latin_name)
+  end
+
 end
+# binding.pry
+#
+#
+
+
+
+#   def test_disease_has_common_name_PASS
+#     assert_equal('Crabs', @disease1.common_name)
+#   end
+# end

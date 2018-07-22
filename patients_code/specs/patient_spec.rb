@@ -24,14 +24,14 @@ class TestPatient < MiniTest::Test
       "gender" => "male",
       "profession" => "binman"})
 
-      @patient3 = Patient.new({
-        "first_name" => "david",
-        "second_name" => "lewis",
-        "dob" => "11-11-1999",
-        "age" => "20",
-        "gender" => "male",
-        "profession" => "astronaut"
-      })
+    @patient3 = Patient.new({
+      "first_name" => "david",
+      "second_name" => "lewis",
+      "dob" => "11-11-1999",
+      "age" => "20",
+      "gender" => "male",
+      "profession" => "astronaut"
+    })
   end
 
   def test_patient_first_name
