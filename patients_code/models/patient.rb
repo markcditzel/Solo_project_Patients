@@ -74,4 +74,19 @@ class Patient
     patient = SqlRunner.run( sql, values ).first
     @id = patient['id'].to_i
   end
+
+  def self.delete_all
+    sql = 'DELETE FROM patients'
+    SqlRunner.run( sql )
+  end
+
+  def self.find( id )
+    sql = 'SELECT * FROM patients
+    WHERE id = $1'
+    values = [id]
+    results = SqlRunner.run( sql, values )
+    return Patient.new( results.first)
+  end
 end
+
+# results.map{ |patient| Patient.new(patient) }
