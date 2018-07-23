@@ -1,6 +1,6 @@
-DROP TABLE diagnoses if EXISTS;
-DROP TABLE patients if EXISTS;
-DROP TABLE diseases if EXISTS;
+DROP TABLE IF EXISTS diagnoses;
+DROP TABLE IF EXISTS patients;
+DROP TABLE IF EXISTS diseases;
 
 CREATE TABLE patients (
   id SERIAL8 PRIMARY KEY,
@@ -25,8 +25,8 @@ CREATE TABLE diseases
 CREATE TABLE diagnoses
 (
   id SERIAL8 PRIMARY KEY,
-  disease_id INT8 REFERENCES diseases(id),
-  patient_id INT8 REFERENCES patients(id),
+  disease_id INT8 REFERENCES diseases(id) ON DELETE CASCADE,
+  patient_id INT8 REFERENCES patients(id) ON DELETE CASCADE,
   date_of_diagnosis VARCHAR(10),
   severity_score INT2,
   disease_active VARCHAR(5),
