@@ -111,6 +111,7 @@ class Patient
     SqlRunner.run( sql, values )
   end
 
+  #UPDATE
   def update()
     sql = 'UPDATE patients
     SET
@@ -120,7 +121,8 @@ class Patient
     age,
     gender,
     profession
-    ) =
+    )
+    =
     (
       $1, $2, $3, $4, $5
     )

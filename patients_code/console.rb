@@ -72,8 +72,28 @@ diagnosis2 = Diagnosis.new({
 
   diagnosis2.save
 
+  diagnosis3 = Diagnosis.new({
+    "disease_id" => disease2.id,
+    "patient_id" => patient1.id,
+    "date_of_diagnosis" => "01-01-2018",
+    "severity_score" => "10",
+    "disease_active" => "true",
+    "date_of_resolution" => nil
+    })
+
+  diagnosis3.save
+
   # Diagnosis.delete_all
   # Diagnosis.all
+
+  diagnosis1.disease_active = "false"
+  diagnosis1.update
+
+  diagnosis1.date_of_resolution = "n/a"
+  diagnosis1.update
+
+  # patient1.second_name = 'Dizdell'
+  # patient1.update
 
 
 
