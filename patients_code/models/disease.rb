@@ -1,6 +1,6 @@
 class Disease
 
-  attr_reader :common_name, :latin_name, :disease_agent_class, :organs_affected, :severity_index
+  attr_reader :id, :common_name, :latin_name, :disease_agent_class, :organs_affected, :severity_index
 
   def initialize( options )
     @id = options["id"].to_i if options["id"]
@@ -32,6 +32,12 @@ class Disease
     values = [@common_name, @latin_name, @disease_agent_class, @organs_affected, @severity_index]
     disease = SqlRunner.run( sql, values ).first
     @id = disease['id'].to_i
+  end
+
+  def self.all()
+    sql = 'SELECT * FROM diseases'
+    results = SqlRunner.run(sql)
+    return results.map { |disease| Disease.new( disease)}
   end
 
 end
