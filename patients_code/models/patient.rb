@@ -9,6 +9,8 @@ class Patient
   attr_writer :first_name, :second_name, :age, :gender, :profession
 
   #this method is passed options which will be provided as a hash; the ['x'] references the key of the hash
+
+  #CREATE 1/2
   def initialize( options )
     #this pulls the id-associated 'value' and converts it from a string to an integer; the if statement ensure that the to_i method is only called if there is a string-number to act upon; therefore preventing a nil.to_i error
     #the id is provided once the database assigns it a primary key
@@ -59,6 +61,7 @@ class Patient
     @profession = options["profession"].capitalize
   end
 
+  #CREATE 2/2
   def save()
     sql = 'INSERT INTO patients
     ( first_name,
@@ -77,17 +80,20 @@ class Patient
     @id = patient['id'].to_i
   end
 
+  #READ all
   def self.all()
     sql = 'SELECT * FROM patients'
     results = SqlRunner.run(sql)
     return results.map { |patient| Patient.new( patient )}
   end
 
+  #DELETE all
   def self.delete_all
     sql = 'DELETE FROM patients'
     SqlRunner.run( sql )
   end
 
+  #READ specific
   def self.find( id )
     sql = 'SELECT * FROM patients
     WHERE id = $1'
@@ -96,7 +102,8 @@ class Patient
     return Patient.new( results.first)
   end
 
-  def self.destroy( id )
+  #DELETE specific
+  def self.delete( id )
     sql = 'DELETE FROM patients
     WHERE id = $1'
     values = [id]

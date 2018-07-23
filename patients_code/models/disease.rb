@@ -17,6 +17,21 @@ class Disease
     @severity_index = options["severity_index"].to_i
   end
 
-  
+  def save
+    sql = 'INSERT INTO diseases
+    ( common_name,
+    latin_name,
+    disease_agent_class,
+    organs_affected,
+    severity_index
+    )
+    VALUES (
+    $1, $2, $3, $4, $5
+    )
+    RETURNING id'
+    values = [@common_name, @latin_name, @disease_agent_class, @organs_affected, @severity_index]
+    disease = SqlRunner.run( sql, values ).first
+    @id = disease['id'].to_i
+  end
 
 end

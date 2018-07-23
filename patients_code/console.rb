@@ -18,13 +18,21 @@ patient1 = Patient.new({
 
 patient1.save()
 
-patient1.second_name = 'Dizdell'
-patient1.update
-
-
+# patient1.second_name = 'Dizdell'
+# patient1.update
 
 #p Patient.find('4')
 
 # p Patient.all()
 
-#Patient.destroy(6)
+#Patient.delete(6)
+
+disease1 = Disease.new({
+"common_name" => "croop",
+"latin_name" => "acute laryngotracheitis",
+"disease_agent_class" => "virus",
+"organs_affected" => "lungs",
+"severity_index" => "3"
+})
+
+disease1.save

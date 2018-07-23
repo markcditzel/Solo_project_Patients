@@ -59,13 +59,3 @@ class TestDisease < MiniTest::Test
 
 
 end
-# binding.pry
-#
-#
-
-
-
-#   def test_disease_has_common_name_PASS
-#     assert_equal('Crabs', @disease1.common_name)
-#   end
-# end
