@@ -55,7 +55,7 @@ diagnosis1 = Diagnosis.new({
   "patient_id" => patient1.id,
   "date_of_diagnosis" => "01-01-2018",
   "severity_score" => "10",
-  "disease_active" => "true",
+  "disease_active" => "false",
   "date_of_resolution" => "21-01-2018"
   })
 
@@ -66,8 +66,8 @@ diagnosis2 = Diagnosis.new({
   "patient_id" => patient1.id,
   "date_of_diagnosis" => "01-01-2018",
   "severity_score" => "10",
-  "disease_active" => "true",
-  "date_of_resolution" => "21-01-2018"
+  "disease_active" => "false",
+  "date_of_resolution" => "01-01-1971"
   })
 
   diagnosis2.save
@@ -86,11 +86,11 @@ diagnosis2 = Diagnosis.new({
   # Diagnosis.delete_all
   # Diagnosis.all
 
-  diagnosis1.disease_active = "false"
-  diagnosis1.update
+  # diagnosis1.disease_active = "false"
+  # diagnosis1.update
 
-  diagnosis1.date_of_resolution = "n/a"
-  diagnosis1.update
+  # diagnosis1.date_of_resolution = "n/a"
+  # diagnosis1.update
 
   # patient1.second_name = 'Dizdell'
   # patient1.update

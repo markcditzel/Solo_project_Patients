@@ -19,8 +19,27 @@ class Diagnosis
       false
     end
     #TODO need to add somethign to accept nil, empty or n/a
-    @date_of_resolution =  Date.parse(options["date_of_resolution"])
+    @date_of_resolution =
+    if options["disease_active"] == 'false'
+       Date.parse(options["date_of_resolution"])
+    else
+       options["date_of_resolution"] = nil
+    end
   end
+
+#   if str == "xxx"
+#   puts "X Wins!"
+#   return true
+# elsif str == "ooo"
+#   puts "O Wins!"
+#   return true
+# end
+
+  #if options["date_of_resolution"] == nil
+    #return 'not applicable'
+  #else
+  #Date.parse(options["date_of_resolution"]
+
 
 
   # Cant get the date_of_resolution to accept a empty string and display 'not resolved' or 'n/a' if no resolution date is provided
