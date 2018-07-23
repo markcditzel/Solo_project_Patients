@@ -4,7 +4,7 @@ class Diagnosis
 
   attr_reader :disease_id, :patient_id, :date_of_diagnosis, :severity_score, :disease_active, :date_of_resolution
 
-  attr_writer :disease_active, :date
+  attr_writer :disease_active, :date_of_resolution
 
   def initialize( options )
     @id = options["id"].to_i if options["id"]

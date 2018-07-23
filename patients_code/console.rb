@@ -83,6 +83,10 @@ diagnosis2 = Diagnosis.new({
 
   diagnosis3.save
 
+  diagnosis3.disease_active = "false"
+  diagnosis3.date_of_resolution = "24-4-2017"
+  diagnosis3.update
+
   # Diagnosis.delete_all
   # Diagnosis.all
 
