@@ -27,27 +27,6 @@ class Diagnosis
     end
   end
 
-#   if str == "xxx"
-#   puts "X Wins!"
-#   return true
-# elsif str == "ooo"
-#   puts "O Wins!"
-#   return true
-# end
-
-  #if options["date_of_resolution"] == nil
-    #return 'not applicable'
-  #else
-  #Date.parse(options["date_of_resolution"]
-
-
-
-  # Cant get the date_of_resolution to accept a empty string and display 'not resolved' or 'n/a' if no resolution date is provided
-
-  # options["date_of_diagnosis"] == "n/a"
-  #   return "n/a"
-  # else
-
   #Define CRUD-associated methods - this order avoids a clash between unintended routing into a 'fuzzy' :id containing action
 
   #C = GET:new and POST:create
@@ -79,6 +58,13 @@ class Diagnosis
     SqlRunner.run( sql )
   end
 
+  def self.delete(id)
+    sql = 'DELETE FROM diagnoses
+    WHERE id = $1'
+    values = [id]
+    SqlRunner.run( sql, values)
+  end
+
   def self.all()
     sql = 'SELECT * FROM diagnoses'
     results = SqlRunner.run( sql )
@@ -101,13 +87,20 @@ class Diagnosis
     SqlRunner.run( sql, values )
   end
 
-
-  def assign_disease
-    #take a patient_id and assign it to a Diagnosis
+  def assign_disease()
+    sql = 'SELECT * FROM diseases
+    WHERE id = $1'
+    values = [@disease_id]
+    disease = SqlRunner.run( sql, values )
+    return Disease.new( disease.first )
   end
 
-  def assign_patient
-    #take a patient and assign it to a Diagnosis
+  def assign_patient()
+    sql = 'SELECT * FROM patients
+    WHERE id = $1'
+    values = [@patient_id]
+    patient = SqlRunner.run( sql, values )
+    return Patient.new( patient.first)
   end
 
 end

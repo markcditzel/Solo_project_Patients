@@ -1,6 +1,6 @@
-DROP TABLE patients IF exists;
+DROP TABLE diagnoses IF exists;DROP TABLE patients IF exists;
 DROP TABLE diseases IF exists;
-DROP TABLE diagnoses IF exists;
+
 
 CREATE TABLE patients
 (
