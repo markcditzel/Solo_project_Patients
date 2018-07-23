@@ -1,13 +1,12 @@
-DROP TABLE diagnoses IF exists;DROP TABLE patients IF exists;
-DROP TABLE diseases IF exists;
+DROP TABLE diagnoses if EXISTS;
+DROP TABLE patients if EXISTS;
+DROP TABLE diseases if EXISTS;
 
-
-CREATE TABLE patients
-(
-  id serial8 primary key,
-  first_name VARCHAR(255) not null,
-  second_name VARCHAR(255) not null,
-  dob VARCHAR(10), -- restrain to xx-xx-xxxx
+CREATE TABLE patients (
+  id SERIAL8 PRIMARY KEY,
+  first_name VARCHAR (255),
+  second_name VARCHAR(255),
+  dob VARCHAR(10),
   age INT2,
   gender VARCHAR(255),
   profession VARCHAR(255)
@@ -15,8 +14,8 @@ CREATE TABLE patients
 
 CREATE TABLE diseases
 (
-  id serial8 primary key,
-  common_name VARCHAR(255) not null,
+  id SERIAL8 PRIMARY KEY,
+  common_name VARCHAR(255),
   latin_name VARCHAR(255),
   disease_agent_class VARCHAR(255),
   organs_affected VARCHAR(255),
@@ -25,11 +24,11 @@ CREATE TABLE diseases
 
 CREATE TABLE diagnoses
 (
-  id serial8 primary key,
-  disease_id INT8 references diseases(id) ON DELETE CASCADE,
-  patient_id INT8 references patients(id) ON DELETE CASCADE,
-  date_of_diagnosis VARCHAR(10), -- restrain to xx-xx-xxxx
+  id SERIAL8 PRIMARY KEY,
+  disease_id INT8 REFERENCES diseases(id),
+  patient_id INT8 REFERENCES patients(id),
+  date_of_diagnosis VARCHAR(10),
   severity_score INT2,
-  disease_active VARCHAR(5), -- restrict to true or false
-  date_of_resolution VARCHAR(10) -- restrain to xx-xx-xxxx
+  disease_active VARCHAR(5),
+  date_of_resolution VARCHAR(10)
 );
