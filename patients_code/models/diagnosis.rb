@@ -45,6 +45,17 @@ class Diagnosis
     @id = diagnosis['id'].to_i
   end
 
+  def self.delete_all
+    sql = 'DELETE FROM diagnoses'
+    SqlRunner.run( sql )
+  end
+
+  def self.all()
+    sql = 'SELECT * FROM diagnoses'
+    results = SqlRunner.run( sql )
+    return results.map { |diagnosis| Diagnosis.new( diagnosis )}
+  end
+
   def assign_disease
     #take a patient_id and assign it to a Diagnosis
   end
