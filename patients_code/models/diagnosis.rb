@@ -26,6 +26,25 @@ class Diagnosis
     #U = GET:edit and POST:update
     #D = POST:destroy
 
+  def save()
+    sql = 'INSERT INTO diagnoses
+    ( disease_id,
+    patient_id,
+    date_of_diagnosis,
+    severity_score,
+    disease_active,
+    date_of_resolution
+    )
+    VALUES
+    (
+    $1, $2, $3, $4, $5, $6
+    )
+    RETURNING id'
+    values = [@disease_id, @patient_id, @date_of_diagnosis, @severity_score, @disease_active, @date_of_resolution]
+    diagnosis = SqlRunner.run( sql, values ).first
+    @id = diagnosis['id'].to_i
+  end
+
   def assign_disease
     #take a patient_id and assign it to a Diagnosis
   end

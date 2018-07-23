@@ -3,8 +3,8 @@ require_relative( './models/patient' )
 require_relative( './models/disease' )
 require_relative( './models/diagnosis' )
 
-Patient.delete_all()
-Disease.delete_all()
+# Patient.delete_all()
+# Disease.delete_all()
 # Diagnosis.delete_all()
 
 
@@ -47,7 +47,16 @@ disease2 = Disease.new({
 
 disease2.save
 
+diagnosis1 = Diagnosis.new({
+  "disease_id" => "16",
+  "patient_id" => "20",
+  "date_of_diagnosis" => "01-01-2018",
+  "severity_score" => "10",
+  "disease_active" => "true",
+  "date_of_resolution" => "21-01-2018"
+  })
 
+diagnosis1.save
 # p Disease.all()
 
 #Disease.delete_all
