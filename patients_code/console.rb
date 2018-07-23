@@ -39,4 +39,6 @@ disease1.save
 
 # p Disease.all()
 
-Disease.delete_all
+#Disease.delete_all
+
+p Disease.find(disease1.id)

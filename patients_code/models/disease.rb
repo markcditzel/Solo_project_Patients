@@ -45,4 +45,12 @@ class Disease
     SqlRunner.run( sql )
   end
 
+  def self.find( id )
+    sql = 'SELECT * FROM diseases
+    WHERE id = $1'
+    values = [id]
+    results = SqlRunner.run( sql, values )
+    return Disease.new(results.first)
+  end
+
 end
