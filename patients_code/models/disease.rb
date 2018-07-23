@@ -40,4 +40,9 @@ class Disease
     return results.map { |disease| Disease.new( disease)}
   end
 
+  def self.delete_all
+    sql = 'DELETE FROM diseases'
+    SqlRunner.run( sql )
+  end
+
 end

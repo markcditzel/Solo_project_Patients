@@ -37,4 +37,6 @@ disease1 = Disease.new({
 
 disease1.save
 
-p Disease.all()
+# p Disease.all()
+
+Disease.delete_all
