@@ -53,4 +53,10 @@ class Disease
     return Disease.new(results.first)
   end
 
+  def self.delete( id )
+    sql = 'DELETE FROM diseases WHERE id = $1'
+    values = [id]
+    SqlRunner.run( sql, values )
+  end
+
 end

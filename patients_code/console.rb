@@ -4,7 +4,7 @@ require_relative( './models/disease' )
 require_relative( './models/diagnosis' )
 
 Patient.delete_all()
-# Disease.delete_all()
+Disease.delete_all()
 # Diagnosis.delete_all()
 
 
@@ -37,8 +37,21 @@ disease1 = Disease.new({
 
 disease1.save
 
+disease2 = Disease.new({
+"common_name" => "bloop",
+"latin_name" => "acute laryngotracheitis",
+"disease_agent_class" => "virus",
+"organs_affected" => "lungs",
+"severity_index" => "3"
+})
+
+disease2.save
+
+
 # p Disease.all()
 
 #Disease.delete_all
 
-p Disease.find(disease1.id)
+# Disease.find(disease1.id)
+
+Disease.delete(disease1.id)
