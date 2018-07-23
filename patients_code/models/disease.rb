@@ -17,4 +17,6 @@ class Disease
     @severity_index = options["severity_index"].to_i
   end
 
+  
+
 end

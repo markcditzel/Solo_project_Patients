@@ -4,7 +4,9 @@ require 'date' # this ensures that dobs and ages can be manipulated
 
 class Patient
 
-  attr_reader :first_name, :second_name, :dob, :age, :gender, :profession, :save
+  attr_reader :id, :first_name, :second_name, :dob, :age, :gender, :profession
+  #these values are for the .update functon; dob should not change
+  attr_writer :first_name, :second_name, :age, :gender, :profession
 
   #this method is passed options which will be provided as a hash; the ['x'] references the key of the hash
   def initialize( options )
@@ -75,6 +77,12 @@ class Patient
     @id = patient['id'].to_i
   end
 
+  def self.all()
+    sql = 'SELECT * FROM patients'
+    results = SqlRunner.run(sql)
+    return results.map { |patient| Patient.new( patient )}
+  end
+
   def self.delete_all
     sql = 'DELETE FROM patients'
     SqlRunner.run( sql )
@@ -87,6 +95,29 @@ class Patient
     results = SqlRunner.run( sql, values )
     return Patient.new( results.first)
   end
-end
 
-# results.map{ |patient| Patient.new(patient) }
+  def self.destroy( id )
+    sql = 'DELETE FROM patients
+    WHERE id = $1'
+    values = [id]
+    SqlRunner.run( sql, values )
+  end
+
+  def update()
+    sql = 'UPDATE patients
+    SET
+    (
+    first_name,
+    second_name,
+    age,
+    gender,
+    profession
+    ) =
+    (
+      $1, $2, $3, $4, $5
+    )
+    WHERE id = $6'
+    values = [@first_name, @second_name, @age, @gender, @profession, @id]
+    SqlRunner.run( sql,values )
+  end
+end
