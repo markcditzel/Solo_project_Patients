@@ -1,11 +1,12 @@
 <h1> Assign a Diagnosis to a Patient </h1>
 
-<form action="/diagnoses" method="post">
+<form action="/diagnoses" method="POST">
+
   <label>
   Select a patient:
     <select name="patient_id">
       <% for patient in @patients %>
-      <option value="<%= patient.id %>"><%= patient.first_name + " " + patient.second_name + " " + patient.id %></option>
+      <option value="<%= patient.id %>"><%= patient.first_name + " " + patient.second_name + " " + patient.id.to_s %></option>
       <% end %>
     <select>
   </label>
@@ -19,5 +20,25 @@
     <select>
   </label>
 
+  <br>
+
+  <label for="date_of_diagnosis">Date of Diagnosis:</label>
+  <input type="date" name="date_of_diagnosis" id="date-of-diagnosis"/>
+
+  <br>
+
+  <label for="severity_score">Enter A Disease severity score from 1-5:</label>
+  <input type="number" name="severity_score" id="severity-score"/>
+
+  <br>
+
+  <!-- <label for="disease_active">Is the Disease still present?:</label>
+  <input type="boolean" name="severity_score" id="severity-score"/> -->
+
+  <input type="checkbox" name="disease_active" value="t" id="disease-active"><label for="disease_active"> Disease still present? If so check the box</label>
+
+<br>
+
   <input type='submit' value="Assign Diagnosis">
-</form>   
+
+</form>

@@ -13,7 +13,6 @@ get '/patients' do
 end
 
 #GET: From to create a new patient entry, needs to be above fuzzy routes
-
 get '/patients/new' do
   erb(:"patients/new")
 end

@@ -13,6 +13,7 @@ class Diagnosis
     @date_of_diagnosis = Date.parse(options["date_of_diagnosis"])
     @severity_score = options["severity_score"].to_i
     @disease_active = (options["disease_active"] == 't') ? true : false
+    #Pawel said the database would return t or f; and we changed the Sql field to Boolean
 
     # binding.pry
 
