@@ -1,0 +1,23 @@
+<h1> Assign a Diagnosis to a Patient </h1>
+
+<form action="/diagnoses" method="post">
+  <label>
+  Select a patient:
+    <select name="patient_id">
+      <% for patient in @patients %>
+      <option value="<%= patient.id %>"><%= patient.first_name + " " + patient.second_name + " " + patient.id %></option>
+      <% end %>
+    <select>
+  </label>
+
+  <label>
+  Select a disease:
+    <select name="disease_id">
+      <% for disease in @diseases %>
+      <option value="<%= disease.id %>"><%= disease.common_name + " " + disease.latin_name %></option>
+      <% end %>
+    <select>
+  </label>
+
+  <input type='submit' value="Assign Diagnosis">
+</form>   

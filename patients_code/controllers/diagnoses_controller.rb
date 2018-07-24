@@ -15,9 +15,13 @@ end
 #GET: Show a specific patient
 get '/diagnoses/:id' do
   @diagnosis = Diagnosis.find(params['id'].to_i)
-  erb(:"diagnoses/show")  
+  erb(:"diagnoses/show")
 end
 
-#GET: From to create a new patient entry
+# Create a new diagnosis
 
-#POST: Form to add an new entry to the db
+get '/diagnoses/new' do
+  @patients = Patient.all
+  @diseases = Disease.all
+  erb(:"diagnoses/new")
+end
