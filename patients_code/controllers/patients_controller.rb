@@ -12,12 +12,23 @@ get '/patients' do
   erb(:"patients/index")
 end
 
+#GET: From to create a new patient entry, needs to be above fuzzy routes
+
+get '/patients/new' do
+  erb(:"patients/new")
+end
+
+post '/patients' do
+  patient = Patient.new( params )
+  patient.save
+end
+
 #GET: Show a specific patient
 get '/patients/:id' do
   @patient = Patient.find(params['id'].to_i)
   erb(:"patients/show")
 end
 
-#GET: From to create a new patient entry
+
 
 #POST: Form to add an new entry to the db
