@@ -1,6 +1,0 @@
-# require( 'sinatra' )
-# require( 'sinatra/contrib/all' )
-# require( 'pry-debug' )
-require_relative ( '../models/patient.rb' )
-require_relative ( '../models/disease.rb' )
-require_relative ( '../models/diagnosis.rb' )
