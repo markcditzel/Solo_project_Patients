@@ -1,7 +1,15 @@
+<h1> Patient Details </h1>
+
 <h1> FIRST NAME = <%= @patient.first_name %>  </h1>
 <h1> SURNAME = <%= @patient.second_name %> </h1>
 <h1> AGE = <%= @patient.age %> </h1>
 
 <ul>
-  <li></li>
+  <li>FIRST NAME: = <%= @patient.first_name %></li>
+  <li>SURNAME: = <%= @patient.second_name %></li>
+  <li>AGE: = <%= @patient.age %></li>
 </ul>
+
+<form class="" action="/patients/<%= @patient.id%>/delete" method="POST">
+  <input type="submit" value="DELETE Patient"
+</form>

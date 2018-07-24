@@ -7,38 +7,36 @@ require_relative ( '../models/disease.rb' )
 require_relative ( '../models/diagnosis.rb' )
 
 
-#GET: Show all the patients
+#INDEX = GET: Show all the patients
 get '/diagnoses' do
   @diagnoses = Diagnosis.all()
   erb(:"diagnoses/index")
 end
 
-# GET Create a new diagnosis
-
+#NEW = GET Create a new diagnosis form
 get '/diagnoses/new' do
   @patients = Patient.all
   @diseases = Disease.all
   erb(:"diagnoses/new")
 end
 
-#POST Send new diagnosis to db
+#CREATE = POST Send new diagnosis to db
 post '/diagnoses' do
   diagnosis = Diagnosis.new( params )
   diagnosis.save
   redirect to("/patients")
 end
 
-#GET: Show a specific patient
+#EDIT = GET a prepopulated form to edit details
+get '/diagnoses/edit/:id' do
+  @diagnosis = Diagnosis.find(params['id'])
+  erb( :"diagnoses/edit" )
+end
+
+#UPDATE = POST the updated infor to the debug
+
+#SHOW = GET: Show a specific patient
 get '/diagnoses/:id' do
   @diagnosis = Diagnosis.find(params['id'].to_i)
   erb(:"diagnoses/show")
 end
-
-#
-# #POST: Patient info to db
-# post '/patients' do
-#   @patient = Patient.new( params )
-#   @patient.save
-#
-#   erb(:"patients/create")
-# end

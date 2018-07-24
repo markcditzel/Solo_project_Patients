@@ -31,11 +31,9 @@ get '/patients/:id' do
   erb(:"patients/show")
 end
 
-#POST: Delete a Patient
-#NB this is a GET method, if using a find followed by delete method then it is a POST method!
-get '/patients/:id/delete' do
-  @deleted_patient = Patient.find(params['id'])
-  @patient = Patient.delete( params['id'] )
-  erb(:"patients/delete")
-  # redirect to "patients"
+#Alternative DELETE a patient
+post '/patients/:id/delete' do
+  @patient = Patient.find( params['id'])
+  @patient.delete
+  redirect to "patients"
 end

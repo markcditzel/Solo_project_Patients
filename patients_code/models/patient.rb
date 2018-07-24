@@ -111,6 +111,13 @@ class Patient
     SqlRunner.run( sql, values )
   end
 
+  def delete()
+    sql = 'DELETE FROM patients
+    WHERE id = $1'
+    values = [@id]
+    SqlRunner.run( sql, values )
+  end
+
   #UPDATE
   def update()
     sql = 'UPDATE patients
