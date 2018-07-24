@@ -141,7 +141,7 @@ diagnosis1 = Diagnosis.new({
   "patient_id" => disease1.id,
   "date_of_diagnosis" => "01-01-2018",
   "severity_score" => "10",
-  "disease_active" => "true",
+  "disease_active" => true,
   "date_of_resolution" => nil
   })
 diagnosis1.save

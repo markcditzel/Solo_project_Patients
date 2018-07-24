@@ -1,5 +1,5 @@
 require 'date'
-
+require 'pry-byebug'
 class Diagnosis
 
   attr_reader :disease_id, :patient_id, :date_of_diagnosis, :severity_score, :disease_active, :date_of_resolution
@@ -12,12 +12,10 @@ class Diagnosis
     @patient_id = options["patient_id"].to_i if options["patient_id"]
     @date_of_diagnosis = Date.parse(options["date_of_diagnosis"])
     @severity_score = options["severity_score"].to_i
-    @disease_active = if options["disease_active"] == 'true'
-      true
-    elsif
-      options["disease_active"] == 'false'
-      false
-    end
+    @disease_active = (options["disease_active"] == 't') ? true : false
+
+    # binding.pry
+
     #TODO need to add somethign to accept nil, empty or n/a
     @date_of_resolution =
     if options["disease_active"] == 'false'

@@ -29,6 +29,6 @@ CREATE TABLE diagnoses
   patient_id INT8 REFERENCES patients(id) ON DELETE CASCADE,
   date_of_diagnosis VARCHAR(10),
   severity_score INT2,
-  disease_active VARCHAR(5),
+  disease_active BOOLEAN,
   date_of_resolution VARCHAR(10)
 );
