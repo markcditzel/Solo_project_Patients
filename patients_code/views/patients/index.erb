@@ -2,15 +2,39 @@
 
 <table>
   <tr>
+    <th>Unique ID</th>
+    <th></th>
     <th>First Name</th>
     <th></th>
-    <th>Secon Name</th>
+    <th>Second Name</th>
+    <th></th>
+    <th>DOB</th>
+    <th></th>
+    <th>Age</th>
+    <th></th>
+    <th>Gender</th>
+    <th></th>
+    <th>Profession</th>
+    <th></th>
+
   </tr>
+
   <% for patient in @patients %>
   <tr>
+    <td><%= patient.id%></td>
+    <td>||</td>
     <td><a href="/patients/<%=patient.id %>"><%= patient.first_name%></a></td>
-    <td>|</td>
+    <td>||</td>
     <td><%= patient.second_name %></td>
+    <td>||</td>
+    <td><%= patient.dob %></td>
+    <td>||</td>
+    <td><%= patient.age %></td>
+    <td>||</td>
+    <td><%= patient.gender %></td>
+    <td>||</td>
+    <td><%= patient.profession %></td>
+    <td>||</td>
   </tr>
   <% end %>
 </table>

@@ -1,0 +1,35 @@
+<h1> Diseases </h1>
+
+<table>
+  <tr>
+    <th>Unique ID</th>
+    <th></th>
+    <th>Common Name</th>
+    <th></th>
+    <th>Latin Name</th>
+    <th></th>
+    <th>Disease Agent</th>
+    <th></th>
+    <th>Affected Organs</th>
+    <th></th>
+    <th>Severity Index</th>
+
+    </tr>
+
+    <% for disease in @diseases %>
+    <tr>
+      <td><%= disease.id%></td>
+      <td>||</td>
+      <td><a href="/diseases/<%=disease.common_name %>"><%= disease.common_name%></a></td>
+      <td>||</td>
+      <td><%= disease.latin_name %></td>
+      <td>||</td>
+      <td><%= disease.disease_agent_class %></td>
+      <td>||</td>
+      <td><%= disease.organs_affected %></td>
+      <td>||</td>
+      <td><%= disease.severity_index %></td>
+      <td>||</td>
+    </tr>
+    <% end %>
+  </table>

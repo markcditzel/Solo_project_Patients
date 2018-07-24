@@ -13,6 +13,10 @@ get '/diagnoses' do
 end
 
 #GET: Show a specific patient
+get '/diagnoses/:id' do
+  @diagnosis = Diagnosis.find(params['id'].to_i)
+  erb(:"diagnoses/show")  
+end
 
 #GET: From to create a new patient entry
 

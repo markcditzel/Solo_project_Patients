@@ -2,7 +2,7 @@ require 'date'
 require 'pry-byebug'
 class Diagnosis
 
-  attr_reader :disease_id, :patient_id, :date_of_diagnosis, :severity_score, :disease_active, :date_of_resolution
+  attr_reader :id, :disease_id, :patient_id, :date_of_diagnosis, :severity_score, :disease_active, :date_of_resolution
 
   attr_writer :disease_active, :date_of_resolution
 
@@ -68,6 +68,15 @@ class Diagnosis
     results = SqlRunner.run( sql )
     return results.map { |diagnosis| Diagnosis.new( diagnosis )}
   end
+
+  def self.find( id )
+    sql = 'SELECT * FROM diagnoses
+    WHERE id = $1'
+    values = [id]
+    results = SqlRunner.run( sql, values )
+    return Diagnosis.new( results.first)
+  end
+
 
   def update()
     sql = 'UPDATE diagnoses

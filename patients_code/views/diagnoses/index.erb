@@ -1,1 +1,35 @@
-<p><%= @diagnoses.length %></p>
+<h1> Diagnoses </h1>
+
+<table>
+  <tr>
+    <th>Unique ID</th>
+    <th></th>
+    <th>Disease ID</th>
+    <th></th>
+    <th>Patient ID</th>
+    <th></th>
+    <th>Date Diagnosis Made</th>
+    <th></th>
+    <th>Severity of Disease</th>
+    <th></th>
+    <th>Is the Disease Still Active?</th>
+    <th></th>
+
+  </tr>
+  <% for diagnosis in @diagnoses %>
+  <tr>
+    <td><%=diagnosis.id%></td>
+    <td>||</td>
+    <td><a href="/patients/<%=diagnosis.id %>"><%= diagnosis.disease_id%></a></td>
+    <td>||</td>
+    <td><%= diagnosis.patient_id %></td>
+    <td>||</td>
+    <td><%= diagnosis.date_of_diagnosis %></td>
+    <td>||</td>
+    <td><%= diagnosis.severity_score %></td>
+    <td>||</td>
+    <td><%= (diagnosis.disease_active == true) ? 'Active Disease' : 'Resolved Disease' %></td>
+    <td>||</td>
+  </tr>
+  <% end %>
+</table>
