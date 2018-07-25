@@ -1,0 +1,7 @@
+<label for ="gender-select">Select a Gender:</label>
+<select id="gender-select" name="gender">
+  <% for sex in @genders %>
+  <option value="<%=type%>" <%= 'selected' if @patient.gender == type %> ><%=type%></option>
+  <% end %>
+</select>
+</br>

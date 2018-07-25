@@ -6,7 +6,7 @@ class Patient
 
   attr_reader :id, :first_name, :second_name, :dob, :age, :gender, :profession
   #these values are for the .update functon; dob should not change
-  attr_writer :first_name, :second_name, :age, :gender, :profession
+  attr_writer :first_name, :second_name, :dob, :age, :gender, :profession
 
   #this method is passed options which will be provided as a hash; the ['x'] references the key of the hash
 
@@ -65,15 +65,15 @@ class Patient
   def save()
     sql = 'INSERT INTO patients
     ( first_name,
-    second_name,
-    dob,
-    age,
-    gender,
-    profession
+      second_name,
+      dob,
+      age,
+      gender,
+      profession
     )
     VALUES
     (
-    $1, $2, $3, $4, $5, $6
+      $1, $2, $3, $4, $5, $6
     )
     RETURNING id'
     values = [@first_name, @second_name, @dob, @age, @gender, @profession]
@@ -81,20 +81,20 @@ class Patient
     @id = patient['id'].to_i
   end
 
-  #READ all
+  #Show all
   def self.all()
     sql = 'SELECT * FROM patients'
     results = SqlRunner.run(sql)
     return results.map { |patient| Patient.new( patient )}
   end
 
-  #DELETE all
+  #delete all
   def self.delete_all
     sql = 'DELETE FROM patients'
     SqlRunner.run( sql )
   end
 
-  #READ specific
+  #show specific item
   def self.find( id )
     sql = 'SELECT * FROM patients
     WHERE id = $1'
@@ -103,7 +103,7 @@ class Patient
     return Patient.new( results.first)
   end
 
-  #DELETE specific
+  #delete CLASS specific
   def self.delete( id )
     sql = 'DELETE FROM patients
     WHERE id = $1'
@@ -111,6 +111,7 @@ class Patient
     SqlRunner.run( sql, values )
   end
 
+  #delete an object
   def delete()
     sql = 'DELETE FROM patients
     WHERE id = $1'
@@ -123,16 +124,33 @@ class Patient
     sql = 'UPDATE patients
     SET
     (
-    first_name,
-    second_name,
-    profession
+      first_name,
+      second_name,
+      dob,
+      age,
+      gender,
+      profession
     )
     =
     (
-      $1, $2, $3
+      $1, $2, $3, $4, $5, $6
     )
-    WHERE id = $4'
-    values = [@first_name, @second_name, @profession, @id]
+    WHERE id = $7'
+    values = [@first_name, @second_name, @dob, @age, @gender, @profession, @id]
     SqlRunner.run( sql,values )
   end
+
+  #method to identify which disease the patient is associated with
+  def diseases()
+    sql = 'SELECT diseases.*
+    FROM diseases
+    INNER JOIN diagnoses
+    ON diagnoses.disease_id = diseases.id
+    WHERE patient_id = $1;'
+    values = [@id]
+    diseases = SqlRunner.run( sql, values )
+    result = diseases.map { |disease| Disease.new (disease)}
+    return result
+  end
+
 end

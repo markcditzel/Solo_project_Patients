@@ -1,6 +1,7 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require_relative ( '../models/disease.rb' )
+require_relative ( '../models/patient.rb')
 
 #GET: Show all the patients
 get '/diseases' do

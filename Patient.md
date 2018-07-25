@@ -1,6 +1,6 @@
 ### Simple Patient Diagnosis Tool - 1st encounter P2C
 
-A local practice has asked you to build a piece of software to help them to manage patient diagnoses.
+A local hospital has asked you to build a piece of software to help them to manage patient diagnoses and monitor disease resolution.
 
 
 ### User Stories / Acceptance Criteria - MVP
@@ -14,6 +14,8 @@ So I can store their disease history and monitor their patterns of disease over 
 Clinicians should be able to:
 	 create a patient
 	 edit a patient
+	 delete a patient
+	 view a patients diagnosed diseases
 
 
 #### Manage Diseases

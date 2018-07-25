@@ -2,6 +2,8 @@ class Disease
 
   attr_reader :id, :common_name, :latin_name, :disease_agent_class, :organs_affected, :severity_index
 
+  attr_writer :id, :common_name, :latin_name, :disease_agent_class, :organs_affected, :severity_index
+
   def initialize( options )
     @id = options["id"].to_i if options["id"]
     @common_name = options["common_name"].capitalize
@@ -57,6 +59,18 @@ class Disease
     sql = 'DELETE FROM diseases WHERE id = $1'
     values = [id]
     SqlRunner.run( sql, values )
+  end
+
+  def patients()
+    sql = 'SELECT patients.*
+    FROM patients
+    INNER JOIN diagnoses
+    ON diagnoses.patient_id = patients.id
+    WHERE disease_id = $1;'
+    values = [@id]
+    patients = SqlRunner.run( sql, values )
+    result = patients.map { |patient| Patient.new (patient)}
+    return result
   end
 
 
