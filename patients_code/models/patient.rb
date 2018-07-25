@@ -118,23 +118,21 @@ class Patient
     SqlRunner.run( sql, values )
   end
 
-  #UPDATE
+  #UPDATE - matched these to those available in the EDIT.ERB
   def update()
     sql = 'UPDATE patients
     SET
     (
     first_name,
     second_name,
-    age,
-    gender,
     profession
     )
     =
     (
-      $1, $2, $3, $4, $5
+      $1, $2, $3
     )
-    WHERE id = $6'
-    values = [@first_name, @second_name, @age, @gender, @profession, @id]
+    WHERE id = $4'
+    values = [@first_name, @second_name, @profession, @id]
     SqlRunner.run( sql,values )
   end
 end

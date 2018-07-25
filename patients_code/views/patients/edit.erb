@@ -1,1 +1,33 @@
-<p>WHAT?<p>
+<h1> Edit Patient Info </h1>
+
+<form method="POST" action="/patients/<%= @patient.id %>">
+
+
+  <label for="first-name">First Name:</label>
+  <input id="first-name" type="text" name="first_name" value="<%= @patient.first_name%>"
+  <br>
+
+  <label for="second-name">Surname:</label>
+  <input id="second-name" type="text" name="second_name" value="<%= @patient.second_name%>"
+  <br>
+
+  <label for="dob">Surname:</label>
+  <input id="dob" type="text" name="dob" value="<%= @patient.dob%>"
+  <br>
+
+
+  <label for="age">Age:</label>
+  <input id="age" type="number" name="age" value="<%= @patient.age%>"
+  <br>
+
+  <label for="gender">Gender:</label>
+  <input id="gender" type="text" name="gender" value="<%= @patient.gender%>"
+  <br>
+
+<label for="profession">Profession:</label>
+<input id="profession" type="text" name="profession" value="<%= @patient.profession%>"
+<br>
+
+<input type="submit" value="Update Patient Details"/>
+
+</form>

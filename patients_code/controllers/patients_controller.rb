@@ -40,8 +40,16 @@ end
 
 #EDIT
 get '/patients/:id/edit' do
+  @genders = ['Male','Female']
   @patient = Patient.find( params['id'] )
   erb(:"patients/edit")
+end
+
+#UPDATE
+post '/patients/:id' do
+  patient = Patient.new(params)
+  patient.update
+  redirect to "/patients/#{params['id']}"
 end
 
 
