@@ -31,9 +31,26 @@ get '/patients/:id' do
   erb(:"patients/show")
 end
 
-#Alternative DELETE a patient
+#Alternative DELETE a patient for show
 post '/patients/:id/delete' do
   @patient = Patient.find( params['id'])
   @patient.delete
   redirect to "patients"
 end
+
+#EDIT
+get '/patients/:id/edit' do
+  @patient = Patient.find( params['id'] )
+  erb(:"patients/edit")
+end
+
+
+
+# This method worked when entered directly into bar
+# POST: Delete a Patient
+# get '/patients/:id/delete' do
+#   @deleted_patient = Patient.find(params['id'])
+#   @patient = Patient.delete( params['id'] )
+#   erb(:"patients/delete")
+#   # redirect to "patients"
+# end

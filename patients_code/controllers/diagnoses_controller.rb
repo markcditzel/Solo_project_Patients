@@ -28,15 +28,22 @@ post '/diagnoses' do
 end
 
 #EDIT = GET a prepopulated form to edit details
-get '/diagnoses/edit/:id' do
+get '/diagnoses/:id/edit' do
   @diagnosis = Diagnosis.find(params['id'])
   erb( :"diagnoses/edit" )
 end
 
-#UPDATE = POST the updated infor to the debug
+#UPDATE = POST the updated infor to the db
+
+post '/diagnoses/:id' do
+  diagnosis = Diagnosis.new( params )
+  diagnosis.update
+  redirect to "patients"  
+end
+
 
 #SHOW = GET: Show a specific patient
 get '/diagnoses/:id' do
-  @diagnosis = Diagnosis.find(params['id'].to_i)
+  @diagnosis = Diagnosis.find( params['id'].to_i)
   erb(:"diagnoses/show")
 end
