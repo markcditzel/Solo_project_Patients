@@ -12,7 +12,7 @@
     <th></th>
     <th>Severity of Disease</th>
     <th></th>
-    <th>Is the Disease Still Active?</th>
+    <th>Disease status?</th>
     <th></th>
 
   </tr>
@@ -28,8 +28,7 @@
     <td>||</td>
     <td><%= diagnosis.severity_score %></td>
     <td>||</td>
-    <td><%= (diagnosis.disease_active == true) ? 'Active Disease' : 'Resolved Disease' %></td>
-    <td>||</td>
+    <td><%= (diagnosis.disease_active == true) ? 'Active' : 'Resolved' %></td>
   </tr>
   <% end %>
 </table>
