@@ -1,16 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
-  <title>Diagnosis_Tracker</title>
-<h1> DitzSoft NHS IT-DISASTER-APP 2000 </h1>
+  <meta charset="utf-8">
+  <title>Diagnosis Tracker 2000</title>
+  <link rel="stylesheet" type="text/css" href="/styles/buttons.css">
+  <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+  <link rel="stylesheet" type="text/css" href="/styles/structure.css">
+  <link rel="stylesheet" type="text/css" href="/styles/tables.css">
+  <link rel="icon" href="/images/heart-beat-icon.png" />
+  <head>
+
+
 <body>
-  <nav id="menu"
-    <li><a href='/'>HOME</a></li>
-    <li><a href='/patients'>All Patients</a></li>
-    <li><a href='/diseases'>All Diseases</a></li>
-    <li><a href='/diagnoses'>All Diagnoses</a></li>
+<main class="flex flex--row">
+  <header> DitzSoft NHS 'IT-DISASTER-APP-2000' </header>
+  <nav id="navigation-menu">
+    <ul>
+      <li>
+        <a href='/'>Home Screen</a>
+      </li>
+      <li>
+        <a href='/patients'>Patients</a>
+      </li>
+      <li>
+        <a href='/diseases'>Diseases</a>
+      </li>
+      <li>
+        <a href='/diagnoses'>Diagnoses</a>
+      </li>
+    </ul>
   </nav>
 
+  <section id="content">
   <%= yield %>
+</section>
 </body>
 </html>

@@ -1,6 +1,4 @@
-<p> A new patient record was created for <%= @patient.first_name + " " + @patient.second_name %> <p>
-
-  <a href="/patients/<%= @patient.id %>">CLICK HERE TO ENTER DETAILS FOR A NEW PATIENT</a>
+<h1> A new patient record was created for <%= @patient.first_name + " " + @patient.second_name %> </h1>
 
   <form action="/patients/<%= @patient.id %>" method="GET">
     <input type="submit" value="View Newly Created Patient">

@@ -1,10 +1,11 @@
 <h1> Diseases </h1>
 
-<a href="/diseases/new">CLICK HERE TO ENTER DETAILS FOR A NEW DISEASE</a>
+<a href="/diseases/new">*** Add a New Disease</a>
 <p>Add a search bar here</p>
-<br>
 
 <table>
+  <h2> List of All Diseases </h2>
+  <caption> Disease Info </caption>
   <tr>
     <th>Unique ID</th>
     <th></th>
@@ -33,7 +34,6 @@
       <td><%= disease.organs_affected %></td>
       <td>||</td>
       <td><%= disease.severity_index %></td>
-      <td>||</td>
     </tr>
     <% end %>
   </table>

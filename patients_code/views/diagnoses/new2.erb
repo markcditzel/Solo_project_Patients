@@ -1,9 +1,13 @@
-<h1> Assign a Diagnosis to a Patient </h1>
+<h1> Assign a Diagnosis to a <%=@patient.first_name + " " + @patient.second_name%> </h1>
 
-<h1> Patient Diagnosis for: <%=@patient.first_name + " " + @patient.second_name%></p>
+<div>
+  <label for="patient-id">Patient ID: </label>
+  <input id="patient-id" type="number" name="patient_id" value="<%= @patient.id%>" readonly/>
+</div>
+
+<p></p>
 
 <form action="/diagnoses" method="POST">
-
   <label>
   Select a disease:
     <select name="disease_id">
@@ -13,31 +17,27 @@
     <select>
   </label>
 
-  <br>
   <p></p>
-
-  <label for="patient-id">Patient ID - READ-ONLY:</label>
-  <input id="patient-id" type="number" name="patient_id" value="<%= @patient.id%>" readonly/>
-  <br>
-
-<p></p>
 
   <label for="date_of_diagnosis">Date of Diagnosis:</label>
   <input type="date" name="date_of_diagnosis" id="date-of-diagnosis" value="<%= Date.today%>"/>
 
 <p></p>
-  <br>
 
-  <label for="severity_score">Enter A Disease severity score from 1-5:</label>
-  <input type="number" name="severity_score" id="severity-score"/>
+  <label for="severity_score">Disease severity score</label>
+  <select id="severity-score" name="severity_score">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
 
-  <br>
   <p></p>
 
+  <input type="checkbox" name="disease_resolved" value="f" id="disease-resolved"><label for="disease_active">Disease Resolved?</label>
 
-  <input type="checkbox" name="disease_resolved" value="f" id="disease-resolved"><label for="disease_active">Check if the disease has been resolved?</label>
-
-  <br>
+  <p></p>
 
   <input type='submit' value="Assign Diagnosis">
 

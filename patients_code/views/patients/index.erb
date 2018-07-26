@@ -1,21 +1,19 @@
 <h1> Patients INDEX Page </h1>
 
+<div>
+  <form action="/patients/new" method="GET">
+    <input type="submit" value="Register a New Patient">
+  </form>
 
-<h2> Add a New Patient </h2>
 
-<a href="/patients/new">** Click Here to Enter Details for a New Patient **</a>
-
-
-<h1> Search for Patient Surname </h1>
-
-<input type="text" name="search" placeholder="Search..">
-
-<p></p>
-<br>
-
-<h1> All Patients List </h1>
+  <h1> Search for Existing Patient Surname </h1>
+  <input type="text" name="search" placeholder="Enter Your Surname Search..">
+<div/>
 
 <table>
+  <h2> List of All Patients </h2>
+  <caption> Patient Info </caption>
+  <thead>
   <tr>
     <th>Unique ID</th>
     <th></th>
@@ -31,10 +29,10 @@
     <th></th>
     <th>Profession</th>
     <th></th>
-
   </tr>
+</thead>
 
-<% for patient in @patients %>
+  <% for patient in @patients %>
   <tr>
     <td><%= patient.id%></td>
     <td>||</td>
@@ -49,7 +47,6 @@
     <td><%= patient.gender %></td>
     <td>||</td>
     <td><%= patient.profession %></td>
-    <td>||</td>
   </tr>
   <% end %>
 </table>
