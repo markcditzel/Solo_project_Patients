@@ -5,3 +5,8 @@
   <% end %>
 </select>
 </br>
+
+
+<!-- #Trying to show only active_diagnoses
+<form action="/patients/show2/<%=patient.id%>" method="GET"><input type="submit" value="View Only Active Diagnoses">
+</form> -->
