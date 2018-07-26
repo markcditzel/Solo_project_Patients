@@ -10,7 +10,7 @@ class Patient
 
   #this method is passed options which will be provided as a hash; the ['x'] references the key of the hash
 
-  #CREATE 1/2
+  #CREATE
   def initialize( options )
     #this pulls the id-associated 'value' and converts it from a string to an integer; the if statement ensure that the to_i method is only called if there is a string-number to act upon; therefore preventing a nil.to_i error
     #the id is provided once the database assigns it a primary key
@@ -141,6 +141,7 @@ class Patient
   end
 
   #method to identify which disease the patient is associated with
+  #acts via the diagnosis table
   def diseases()
     sql = 'SELECT diseases.*
     FROM diseases
@@ -151,6 +152,31 @@ class Patient
     diseases = SqlRunner.run( sql, values )
     result = diseases.map { |disease| Disease.new (disease)}
     return result
+  end
+
+  def diagnoses_active()
+    sql = 'SELECT diagnoses.*
+    FROM diagnoses
+    INNER JOIN patients
+    ON patients.id = diagnoses.patient_id
+    WHERE disease_active = true;'
+    diagnoses = SqlRunner.run( sql )
+    result = diagnoses.map {|diagnosis| Diagosis.new(diagnosis)}
+    return result
+  end
+
+
+
+  def current_age(id)
+    patient = Patient.find(id)
+    date = Date.today
+    patient_dob = patient.dob
+    return (date - patient_dob).to_i/365
+  end
+
+  def total_disease(id)
+    patient = Patient.find(id)
+    patient_sev_index = patient
   end
 
 end

@@ -1,8 +1,9 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
+require('pry-byebug')
 # error is pry-debug is required; cant install it either using gem 'pry-byebug'
 # require( 'pry-debug' )
-require_relative ( '../models/diagnosis.rb' )
+require_relative ( '../models/patient.rb' )
 require_relative ( '../models/disease.rb' )
 require_relative ( '../models/diagnosis.rb' )
 
@@ -18,6 +19,13 @@ get '/diagnoses/new' do
   @patients = Patient.all
   @diseases = Disease.all
   erb(:"diagnoses/new")
+end
+
+#NEW V2 = GET Create a new diagnosis for a specific patient
+get '/diagnoses/new2/:id' do
+  @patient = Patient.find(params['id'].to_i)
+  @diseases = Disease.all
+  erb(:"diagnoses/new2")
 end
 
 #CREATE = POST Send new diagnosis to db
@@ -38,7 +46,7 @@ end
 post '/diagnoses/:id' do
   diagnosis = Diagnosis.new( params )
   diagnosis.update
-  redirect to "patients"  
+  redirect to "patients"
 end
 
 

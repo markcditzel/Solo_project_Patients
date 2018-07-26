@@ -1,12 +1,15 @@
-<h3> COMMON NAME = <%= @disease.common_name %>  </h3>
-<h3> LATIN NAME = <%= @disease.latin_name %> </h3>
-<h3> CAUSE = <%= @disease.disease_agent_class %> </h3>
+<h1> Disease: </h1>
+<p> Common Name = <%= @disease.common_name %>  </p>
+<p> Scientific name = <%= @disease.latin_name %> </p>
+<p> Cause / Agent = <%= @disease.disease_agent_class %> </p>
 
+<h1> Afflicted Patients: </h1>
 
 <ul>
   <% @disease.patients.each do | patient | %>
   <li> FIRST NAME: <%= patient.first_name %></li>
     <li> SECOND NAME <%= patient.second_name %></li>
       <li> AGE <%= patient.age %></li>
+  <br>
   <% end %>
 </ul>

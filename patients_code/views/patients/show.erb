@@ -1,27 +1,44 @@
 <h1> Patient Details </h1>
 
-<h1> FIRST NAME = <%= @patient.first_name %>  </h1>
+<!-- <h1> FIRST NAME = <%= @patient.first_name %>  </h1>
 <h1> SURNAME = <%= @patient.second_name %> </h1>
-<h1> AGE = <%= @patient.age %> </h1>
+<h1> AGE = <%= @patient.age %> </h1> -->
 
 <ul>
-  <li>FIRST NAME: = <%= @patient.first_name %></li>
-  <li>SURNAME: = <%= @patient.second_name %></li>
-  <li>AGE: = <%= @patient.age %></li>
+  <li>First Name: = <%= @patient.first_name %></li>
+  <li>Surname: = <%= @patient.second_name %></li>
+  <li>Age: = <%= @patient.current_age(@patient.id) %></li>
 </ul>
 
 <form action="/patients/<%= @patient.id %>/delete" method="POST"><input type="submit" value="DELETE Patient">
 </form>
 
+<br>
+
 <form action="/patients/<%= @patient.id%>/edit" method="GET"><input type="submit" value="EDIT Patient">
 </form>
 
-<p> List of patient's diagnosed diseases </p>
+<br>
+
+<form action="/diagnoses/new" method="GET"><input type="submit" value="Assign New Diagnosis - OLD">
+</form>
+
+<br>
+
+<form action="/diagnoses/new2/<%= @patient.id%>" method="GET"><input type="submit" value="Assign New Diagnosis -NEW">
+</form>
+
+<br>
+
+
+<h2> List of patient's diagnosed diseases: </h2>
 
 <ul>
   <% @patient.diseases.each do |disease| %>
   <li> COMMON NAME: <%= disease.common_name %></li>
     <li> SCIENTIFIC NAME <%= disease.latin_name %></li>
       <li> DISEASE SEVERITY <%= disease.severity_index %></li>
+        <li>
+  <br>
   <% end %>
 </ul>

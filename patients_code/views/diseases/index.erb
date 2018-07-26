@@ -18,11 +18,13 @@
     <th></th>
     <th>Severity Index</th>
 
-    </tr>
+  </tr>
 
     <% for disease in @diseases %>
     <tr>
       <td><%= disease.id%></td>
+      <td>||</td>
+      <td><a href="/diseases/<%=disease.id%>"><%= disease.common_name%></a></td>
       <td>||</td>
       <td><%= disease.common_name%></td>
       <td>||</td>

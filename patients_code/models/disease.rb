@@ -61,6 +61,8 @@ class Disease
     SqlRunner.run( sql, values )
   end
 
+  # retrive the patients that have been diagnosed with thr disease of interest
+  # Acts via the diagnoses table
   def patients()
     sql = 'SELECT patients.*
     FROM patients

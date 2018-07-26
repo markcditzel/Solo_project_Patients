@@ -31,6 +31,14 @@ get '/patients/:id' do
   erb(:"patients/show")
 end
 
+#SHOW2 = GET: Show only the active diagnoses of a particular patient
+# get 'patients/show2/:id' do
+#   patient = Patient.find(params['id'].to_i)
+#   active_diagnoses = patient.diagnoses_active
+#   return active_diagnoses
+#   erb(:"patients/show2")
+# end
+
 #DELETE Alternative DELETE a patient for show
 post '/patients/:id/delete' do
   @patient = Patient.find( params['id'])
