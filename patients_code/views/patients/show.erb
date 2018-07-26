@@ -16,6 +16,8 @@
 <form action="/patients/<%= @patient.id%>/edit" method="GET"><input type="submit" value="EDIT Patient">
 </form>
 
+<p> List of patient's diagnosed diseases </p>
+
 <ul>
   <% @patient.diseases.each do |disease| %>
   <li> COMMON NAME: <%= disease.common_name %></li>
